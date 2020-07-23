@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+}
+
+.giorni-mese {
+  list-style: none;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.holidays {
+  color: red;
+}
