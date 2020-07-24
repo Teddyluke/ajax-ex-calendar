@@ -73,7 +73,11 @@ function prevMonth(currentMonth) {
       var compiled = Handlebars.compile(template);
       var target = $("#current-month");
       target.html("");
-      target.append(currentMonth.month());
+      var monthInCharge = currentMonth.month();
+      var monthHTML = {
+        "month" : monthInCharge.format("YYYY-MMMM-DD")
+      }
+      target.append(monthHTML);
     }
   })
 };
