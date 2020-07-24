@@ -40,24 +40,14 @@ function printHoliday(currentMonth) {
 }
 
 // MILESTONE 2 : Diamo la possibilità di cambiare mese, gestendo il caso in cui l'API non possa ritornare festività.
-function nextMonth(currentMonth,monthNames) {
+function nextMonth(currentMonth) {
   var nextMonthClick = $(".fa-chevron-right");
   nextMonthClick.click(function () {
     currentMonth.add(1, "months");
-    printMonth(currentMonth);
-    printHoliday(currentMonth);
-    var template = $("#template2").html();
-    var compiled = Handlebars.compile(template);
-    var target = $("#current-month");
-    target.html("");
-    target.append(currentMonth.month());
-  })
-};
-
-function prevMonth(currentMonth) {
-  var prevMonthClick = $(".fa-chevron-left");
-  prevMonthClick.click(function () {
-    currentMonth.subtract(1, "months");
+    if (currentMonth.year() == "2019") {
+      currentMonth.subtract(1, "months")
+      alert("spiacente dati non disponibili");
+    } else {
       printMonth(currentMonth);
       printHoliday(currentMonth);
       var template = $("#template2").html();
@@ -65,8 +55,27 @@ function prevMonth(currentMonth) {
       var target = $("#current-month");
       target.html("");
       target.append(currentMonth.month());
+    }
   })
+};
 
+function prevMonth(currentMonth) {
+  var prevMonthClick = $(".fa-chevron-left");
+  prevMonthClick.click(function () {
+    currentMonth.subtract(1, "months");
+    if (currentMonth.year() == "2017") {
+      currentMonth.add(1, "months")
+      alert("spiacente dati non disponibili");
+    } else {
+      printMonth(currentMonth);
+      printHoliday(currentMonth);
+      var template = $("#template2").html();
+      var compiled = Handlebars.compile(template);
+      var target = $("#current-month");
+      target.html("");
+      target.append(currentMonth.month());
+    }
+  })
 };
 
 
