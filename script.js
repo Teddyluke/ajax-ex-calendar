@@ -1,4 +1,5 @@
-// Creiamo il mese di Gennaio, e con la chiamata all'API inseriamo le festività.
+// MILESTONE 1 : Creiamo il mese di Gennaio, e con la chiamata all'API inseriamo le festività.
+
 function printMonth(currentMonth) {
   var daysInMonth = currentMonth.daysInMonth();
   var template = $("#template").html();
@@ -25,7 +26,6 @@ function printHoliday(currentMonth) {
     "year": year,
     "month": month
   },
-
   success: function (data, state) {
     var holidays = data["response"];
     for (var i = 0; i < holidays.length; i++) {
@@ -33,21 +33,49 @@ function printHoliday(currentMonth) {
       element.addClass("holidays");
       element.append("  " + holidays[i]["name"]);
     }
-
   },
   error: function  (error) {
-
   }
 });
-
 }
+
+// MILESTONE 2 : Diamo la possibilità di cambiare mese, gestendo il caso in cui l'API non possa ritornare festività.
+function nextMonth(currentMonth,monthNames) {
+  var nextMonthClick = $(".fa-chevron-right");
+  nextMonthClick.click(function () {
+    currentMonth.add(1, "months");
+    printMonth(currentMonth);
+    printHoliday(currentMonth);
+    var template = $("#template2").html();
+    var compiled = Handlebars.compile(template);
+    var target = $("#current-month");
+    target.html("");
+    target.append(currentMonth.month());
+  })
+};
+
+function prevMonth(currentMonth) {
+  var prevMonthClick = $(".fa-chevron-left");
+  prevMonthClick.click(function () {
+    currentMonth.subtract(1, "months");
+      printMonth(currentMonth);
+      printHoliday(currentMonth);
+      var template = $("#template2").html();
+      var compiled = Handlebars.compile(template);
+      var target = $("#current-month");
+      target.html("");
+      target.append(currentMonth.month());
+  })
+
+};
 
 
 function init() {
   var currentMonth = moment("2018-01-01");
-  console.log(currentMonth.month());
   printMonth(currentMonth);
   printHoliday(currentMonth);
+  nextMonth(currentMonth);
+  prevMonth(currentMonth);
 }
 
 

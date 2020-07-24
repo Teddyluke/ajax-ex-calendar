@@ -11,7 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
   </head>
   <body>
-    <h1>Gennaio 2018</h1>
+    <div class="flex-container">
+      <i class="fas fa-chevron-left"></i>
+      <h1 id="current-month">Gennaio 2018</h1>
+      <i class="fas fa-chevron-right"></i>
+    </div>
     <div class="flex-container">
       <ul class="giorni-mese">
       </ul>
@@ -21,7 +25,13 @@
       <li data-datecomplete="{{datecomplete}}">{{value}}</li>
 
     </script>
-      
+    <script id="template2" type="text/x-handlebars-template">
+
+      <li data-datecomplete="{{datecomplete}}">{{value}}</li>
+
+    </script>
+
+
     <script type="text/javascript" src="script.js">
 
     </script>

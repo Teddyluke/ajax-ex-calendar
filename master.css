@@ -12,6 +12,11 @@ h1 {
   align-items: center;
 }
 
+.fas {
+  font-size: 2em;
+  cursor: pointer;
+}
+
 .holidays {
   color: red;
 }
