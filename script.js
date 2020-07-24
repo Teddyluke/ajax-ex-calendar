@@ -54,7 +54,7 @@ function nextMonth(currentMonth) {
       var compiled = Handlebars.compile(template);
       var target = $("#current-month");
       target.html("");
-      target.append(currentMonth.month());
+      target.append(currentMonth.format("MMMM-YYYY"));
     }
   })
 };
@@ -73,11 +73,7 @@ function prevMonth(currentMonth) {
       var compiled = Handlebars.compile(template);
       var target = $("#current-month");
       target.html("");
-      var monthInCharge = currentMonth.month();
-      var monthHTML = {
-        "month" : monthInCharge.format("YYYY-MMMM-DD")
-      }
-      target.append(monthHTML);
+      target.append(currentMonth.format("MMMM-YYYY"));
     }
   })
 };
